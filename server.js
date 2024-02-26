@@ -26,7 +26,8 @@ function printMenuHelp() {
 
 //entry point
 if (args.length == 0) {
-    return console.log(chalk.red("ERROR: no args were passed to application."));
+    console.log(chalk.red("ERROR: no args were passed to application."));
+    return printMenuHelp();
 }
 
 const commands = args.reduce((opt, value, index) => {
@@ -39,7 +40,7 @@ const commands = args.reduce((opt, value, index) => {
             } else
                 if (value === '-f' || value === '--file') {
                     if (fs.existsSync(args[index + 1])) {
-                        opt.har = args[index + 1];
+                        opt.harFile = args[index + 1];
                     } else {
                         opt.error = "ERROR: file doesn't exist: " + args[index + 1];
                     }
@@ -54,13 +55,13 @@ const commands = args.reduce((opt, value, index) => {
 if (commands.help) {
     return printMenuHelp();
 }
-if (!commands.har) {
+if (!commands.harFile) {
     return console.error(commands.error);
 }
 
 // server
 app.use((req, res, next) => {
-    server.getResponse(commands.har, req, res, next);
+    server.getResponse(commands.harFile, req, res, next);
 });
 app.listen(commands.port);
-console.log("server listening on port: ", commands.port);
+console.log("server listening on http://localhost:" + chalk.yellow(commands.port));

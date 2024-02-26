@@ -80,7 +80,7 @@ function searchResponse(harObj, req) {
             return element.request.url.path === req.originalUrl;
         });
 
-        tempResponseArray = responseMatchQueryString;
+        tempResponseArray = responseMatchQueryString.length == 0 ? entriesArray : responseMatchQueryString;
 
         //TODO: experimental - enable in future release
         //check body...
@@ -121,7 +121,7 @@ function getResponse(filePath, req, res, next) {
         //if wwe have more than 1 response we select the first with data inside
         let response = results.filter(el => {
             if (el.response.content.text) return el;
-        })[0].response;
+        })[0]?.response;
 
         if (response) {
             if (response.status !== 200) {
@@ -133,11 +133,11 @@ function getResponse(filePath, req, res, next) {
             responseStatus = response.status;
         }
         consoleMessages.push("[http: " + responseStatus + "]");
-        console.log(textColorYellow, ...consoleMessages);
+        console.log(...consoleMessages);
         res.status(404).send();
     } else {
         consoleMessages.push("[http: " + responseStatus + "]");
-        console.log(textColorYellow, ...consoleMessages);
+        console.log(...consoleMessages);
         next();
     }
 
