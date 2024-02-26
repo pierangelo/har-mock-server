@@ -3,8 +3,8 @@ const express = require("express");
 const fs = require('fs');
 const app = express();
 const server = require("./index");
+const chalk = require('chalk');
 const [, , ...args] = process.argv;
-
 
 
 
@@ -16,7 +16,7 @@ function printMenuHelp() {
     console.log(`har-mock-server [options] -f <path_to_file>.har
     options:
       -p  or --port:                    Port number to use. i.e: '-p 8000'
-      -f  or --file <path_to_file>.har: file name included directory. i.e: ./src/assest/file.har
+      -f  or --file <path_to_file>.har: file's name (included directory. i.e: ./assets/file.har)
 
       `);
 
@@ -25,6 +25,10 @@ function printMenuHelp() {
 
 
 //entry point
+if (args.length == 0) {
+    return console.log(chalk.red("ERROR: no args were passed to application."));
+}
+
 const commands = args.reduce((opt, value, index) => {
     try {
         if (value === '--help' || value === '-h') {
@@ -42,7 +46,7 @@ const commands = args.reduce((opt, value, index) => {
                 }
 
     } catch (error) {
-        console.error(error);
+        console.error("error:", error);
     }
     return opt;
 }, { port: 8000 });
