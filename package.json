@@ -1,0 +1,46 @@
+{
+  "name": "har-mock-server",
+  "version": "1.0.0",
+  "description": "mock your FrontEnd project by using HAR file from Chrome",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "har-mock-server": "node server.js -f ./test/test.har",
+    "release": "standard-version",
+    "release-patch": "standard-version -t '' --release-as patch && git push --atomic --follow-tags origin",
+    "release-minor": "standard-version -t '' --release-as minor && git push --atomic --follow-tags origin",
+    "release-major": "standard-version -t '' --release-as major && git push --atomic --follow-tags origin"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^27.5.0",
+    "rewire": "^6.0.0",
+    "standard-version": "^9.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pierangelo/har-mock-server.git"
+  },
+  "bin": {
+    "har-mock-server": "./server.js"
+  },
+  "keywords": [
+    "mock",
+    "FrontEnd",
+    "HAR",
+    "file",
+    "from",
+    "Chrome",
+    "Angular",
+    "json",
+    "server"
+  ],
+  "author": "Pierangelo Mancusi - pierangelo.mancusi@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pierangelo/har-mock-server/issues"
+  },
+  "homepage": "https://github.com/pierangelo/har-mock-server#readme"
+}
