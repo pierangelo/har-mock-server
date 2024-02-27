@@ -3,7 +3,6 @@ const url = require('url');
 
 
 
-
 /**
  *  Deafualt criteria for searching the right response.
  *  @abstract option requestAcceptHeader  is experimental and not used  as criteria
@@ -54,12 +53,8 @@ function searchResponse(harObj, req) {
         //path criteria
         if (urlObj.pathname !== req.path) {
             return false;
-        } else {
-            //test
-            //console.log("subPath:", urlObj.pathname);
-            //console.log("req.path:", req.path);
         }
-        //imetyoe criteria if setted...
+        //mimetyoe criteria if setted...
         if (DEFAULT_SEARCH_OPTIONS.mimeType && e.response.content.mimeType !== DEFAULT_SEARCH_OPTIONS.mimeType) {
             return false;
         }
@@ -82,21 +77,21 @@ function searchResponse(harObj, req) {
 
         tempResponseArray = responseMatchQueryString.length == 0 ? entriesArray : responseMatchQueryString;
 
-        //TODO: experimental - enable in future release
+
         //check body...
-        // if (tempResponseArray.length > 1 && req.body) {
+        if (tempResponseArray.length > 1 && req.body) {
 
-        //   const responseMatchBody = entriesArray.filter(element => {
-        //     const data = element.request.postData;
-        //     if (data) {
-        //       return req.body === data.text;
-        //     }
-        //     return false;
-        //   });
+            const responseMatchBody = entriesArray.filter(element => {
+                const data = element.request.postData;
+                if (data) {
+                    return JSON.stringify(req.body) === data.text;
+                }
+                return false;
+            });
 
-        //   tempResponseArray = responseMatchBody.length > 0 ? responseMatchBody : [];
+            tempResponseArray = responseMatchBody.length == 0 ? tempResponseArray : responseMatchBody;
 
-        // }
+        }
         return tempResponseArray;
     }
     return entriesArray;

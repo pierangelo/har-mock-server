@@ -1,13 +1,15 @@
 ## har-mock-server
-mock your FrontEnd project by using HAR.
+Mock your FrontEnd project by using HAR.
 It creates a server after reading har file, searching for the best response that fits request's criteria.
-By default the server search for only 'application/json' responses that has the same queryString params: if not found anything it returns http 404.
+By default the server search for only 'application/json' responses that has the same **queryString** params and **body**: if not found something it returns http 404.
 
 Server will try to match request api path.
 if there are more results, try to check the full matching request's path.
+  Supports also request's body match criteria.
 
 ## Next Feature
 - Apply response's delay before send to client
+
 
 
 ## Usage
@@ -22,18 +24,19 @@ if there are more results, try to check the full matching request's path.
       "har-mock-server": "har-mock-server -f ./node_modules/har-mock-server/test/test.har"
 	},
 ```
+> [!NOTE]
+> "./node_modules/har-mock-server/test/test.har" is a test file shipped with the package
 
-  note: "./node_modules/har-mock-server/test/test.har" is test file shipped with the package
-
-- launch the server with the defined command:
+- launch the server with the defined command:<br/>
+  ```
   npm run har-mock-server
-
+  ```
 
 # Testing server
 
-in browser address' bar write:
+in browser address' bar write for example:
 
-http://localhost:8000/posts
-http://localhost:8000/todos
-http://localhost:8000/todos?userId=2
-http://localhost:8000/albums
+http://localhost:8000/posts<br />
+http://localhost:8000/todos<br />
+http://localhost:8000/todos?userId=2<br />
+http://localhost:8000/albums<br />

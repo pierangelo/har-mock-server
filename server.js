@@ -4,6 +4,8 @@ const fs = require('fs');
 const app = express();
 const server = require("./index");
 const chalk = require('chalk');
+const bodyParser = require('body-parser');
+
 const [, , ...args] = process.argv;
 
 
@@ -60,6 +62,8 @@ if (!commands.harFile) {
 }
 
 // server
+app.use(bodyParser.json());
+
 app.use((req, res, next) => {
     server.getResponse(commands.harFile, req, res, next);
 });

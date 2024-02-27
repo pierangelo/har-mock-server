@@ -1,6 +1,6 @@
 {
   "name": "har-mock-server",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "mock your FrontEnd project by using HAR file.",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,7 @@
     "release-major": "standard-version -t '' --release-as major && git push --atomic --follow-tags origin"
   },
   "dependencies": {
+    "body-parser": "^1.20.2",
     "chalk": "^4.1.2",
     "express": "^4.17.1"
   },
