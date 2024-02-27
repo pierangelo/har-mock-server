@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/pierangelo/har-mock-server/compare/0.1.0...1.1.0) (2024-02-27)
+
 ## 0.1.0 (2024-02-27)
 
 
