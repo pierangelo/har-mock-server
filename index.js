@@ -1,6 +1,6 @@
 const fs = require('fs');
 const url = require('url');
-
+const chalk = require('chalk');
 
 
 /**
@@ -107,31 +107,40 @@ function searchResponse(harObj, req) {
  */
 function getResponse(filePath, req, res, next) {
     let consoleMessages = [];
-    consoleMessages.push("[request: " + req.path + "]");
+    consoleMessages.push("[request: " + chalk.yellow(req.method) + " " + chalk.yellow(req.path) + "]");
     //default response code if no response were found
     let responseStatus = 404;
     const harObj = readFileHar(filePath);
     const results = searchResponse(harObj, req);
     if (results.length > 0) {
-        //if wwe have more than 1 response we select the first with data inside
-        let response = results.filter(el => {
+
+        let result = results.filter(el => {
             if (el.response.content.text) return el;
-        })[0]?.response;
+        })[0];
+        //if wwe have more than 1 response we select the first with data inside
+        let response = result?.response;
 
         if (response) {
             if (response.status !== 200) {
                 res.status(response.status);
             }
-            //set the response mimetype taken from har and send encoded content
-            res.type(response.content.mimeType).send(Buffer.from(response.content.text, response.content.encoding));
 
-            responseStatus = response.status;
+            res.type(response.content.mimeType);
+            //apply responses delay
+            setTimeout(() => {
+                //set the response mimetype taken from har and send encoded content
+                res.send(Buffer.from(response.content.text, response.content.encoding));
+                responseStatus = response.status;
+                consoleMessages.push("[http: " + chalk.yellow(responseStatus) + "]" + " [delay: " + chalk.yellow(result.time) + "]");
+                console.log(...consoleMessages);
+            }, result.time);
+
+        } else {
+
+            res.status(404).send();
         }
-        consoleMessages.push("[http: " + responseStatus + "]");
-        console.log(...consoleMessages);
-        res.status(404).send();
     } else {
-        consoleMessages.push("[http: " + responseStatus + "]");
+        consoleMessages.push("[http: " + chalk.yellow(responseStatus) + "]");
         console.log(...consoleMessages);
         next();
     }
