@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/pierangelo/har-mock-server/compare/1.1.0...1.2.0) (2024-02-28)
+
+
+### Features
+
+* added delayed responses ([7212f9e](https://github.com/pierangelo/har-mock-server/commit/7212f9e3868037a1754980845604e6de6b535e08))
+* update README ([5af9404](https://github.com/pierangelo/har-mock-server/commit/5af94045ef0985c8e34c3d0268f2b0716a3128ea))
+
 ## [1.1.0](https://github.com/pierangelo/har-mock-server/compare/0.1.0...1.1.0) (2024-02-27)
 
 
