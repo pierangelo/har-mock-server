@@ -4,8 +4,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.1.0](https://github.com/pierangelo/har-mock-server/compare/0.1.0...1.1.0) (2024-02-27)
 
-## 0.1.0 (2024-02-27)
-
 
 ### Features
 
@@ -22,6 +20,14 @@ All notable changes to this project will be documented in this file. See [standa
 ### 1.0.0 (2024-02-24)
 
 
+
 ### Features
 
 * first release
+* support for queryString match criteria
+* support for only 'application/json' responses
+
+
+### Bug Fixes
+
+* minor bug fix
