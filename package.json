@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "har-mock-server": "node server.js -f ./test/prova.har",
+    "har-mock-server": "node server.js -f ./test/test.har",
     "release": "standard-version",
     "release-patch": "standard-version -t '' --release-as patch && git push --atomic --follow-tags origin",
     "release-minor": "standard-version -t '' --release-as minor && git push --atomic --follow-tags origin",

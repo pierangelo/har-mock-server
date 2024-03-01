@@ -93,7 +93,7 @@ function searchResponse(harObj, req) {
                 return false;
             });
 
-            tempResponseArray = responseMatchBody.length == 0 ? tempResponseArray : responseMatchBody;
+            tempResponseArray = responseMatchBody;
 
         }
         return tempResponseArray;
