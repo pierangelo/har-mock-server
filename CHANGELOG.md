@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/pierangelo/har-mock-server/compare/1.2.0...1.3.0) (2024-03-01)
+
+
+### Bug Fixes
+
+* queryString criteria with request url with extended path: i.e:  <http://baseUrl/path1/path2/api> ([85a761d](https://github.com/pierangelo/har-mock-server/commit/85a761d7b42d58c7e1b133f6eebb938d46f14973))
+
 ## [1.2.0](https://github.com/pierangelo/har-mock-server/compare/1.1.0...1.2.0) (2024-02-28)
 
 
