@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/pierangelo/har-mock-server/compare/1.3.0...1.3.1) (2024-03-01)
+
+
+### Bug Fixes
+
+* correted body's check criteria ([0b92861](https://github.com/pierangelo/har-mock-server/commit/0b928615c543e02255e9a8aa52a651a0a205cd8a))
+
 ## [1.3.0](https://github.com/pierangelo/har-mock-server/compare/1.2.0...1.3.0) (2024-03-01)
 
 
