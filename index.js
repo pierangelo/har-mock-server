@@ -49,9 +49,11 @@ function searchResponse(harObj, req) {
 
     const entriesArray = harObj.log.entries.filter(e => {
         const urlObj = e.request.url;
-
+        //'/fezeus/zeus/getAllErrors'
+        let arrayElements = urlObj.pathname.split("/");
+        let api = "/" + arrayElements[arrayElements.length - 1];
         //path criteria
-        if (urlObj.pathname !== req.path) {
+        if (api !== req.path) {
             return false;
         }
         //mimetyoe criteria if setted...
@@ -70,12 +72,14 @@ function searchResponse(harObj, req) {
     if (entriesArray.length > 1) {
         let tempResponseArray = entriesArray;
 
-        //check queryStrign...
+        //check queryString...
         const responseMatchQueryString = entriesArray.filter(element => {
-            return element.request.url.path === req.originalUrl;
+            let arrayElements = element.request.url.path.split("/");
+            let apiPartial = "/" + arrayElements[arrayElements.length - 1];
+            return apiPartial === req.originalUrl;
         });
 
-        tempResponseArray = responseMatchQueryString.length == 0 ? entriesArray : responseMatchQueryString;
+        tempResponseArray = responseMatchQueryString;
 
 
         //check body...

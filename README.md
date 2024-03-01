@@ -5,13 +5,17 @@ By default the server searches for only 'application/json' responses that have t
 
 Server will try to match request api path.
 if there are more results, try to check the full matching request's path.
-<br >From v1.1.0 it supports also request's **body** match criteria.
-<br >From v1.2.0  it supports **delayed** response (as register in file HAR)
+
 
 ## Next Feature
 - flag for using delayed responses option
 - ....
 
+
+## Changelog
+<br >From v1.3.0  fix in queryString criteria with request url with extended path: i.e:  <http://baseUrl/path1/path2/api>
+<br >From v1.2.0  it supports **delayed** response (as register in file HAR)
+<br >From v1.1.0 it supports also request's **body** match criteria.
 
 
 ## Install
