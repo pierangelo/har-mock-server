@@ -23,9 +23,9 @@ i.e:  you generate a request as http://localhost/<_controller_>/<_function_> and
 
 - From v1.3.0  fix in queryString criteria with request url with extended path: i.e:  <http://baseUrl/path1/path2/api>
 <br/>
+
 - From v1.2.0  it supports **delayed** response (as register in file HAR)
 <br/>
-
 - From v1.1.0 it supports also request's **body** match criteria.
 
 
