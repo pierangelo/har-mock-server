@@ -13,9 +13,21 @@ if there are more results, try to check the full matching request's path.
 
 
 ## Changelog
-<br >From v1.3.0  fix in queryString criteria with request url with extended path: i.e:  <http://baseUrl/path1/path2/api>
-<br >From v1.2.0  it supports **delayed** response (as register in file HAR)
-<br >From v1.1.0 it supports also request's **body** match criteria.
+- From v1.4.0 you can set a **custom basePath** (-b param) as a non important url's part and should not be considered during matching.<br>
+i.e:  you generate a request as http://localhost/<_controller_>/<_function_> and request in HAR file are memoized in http://site.com/<_context_>/<_controller_>/<_function_>.
+<br>you have 2 ways to get the match:
+<br>- generate request as http://localhost/<_context_><_controller_>/<_function_>
+<br>- or telling the server not considering <_context_> as a part during the match.
+<br>so passing the param "-b /<_context_>/" the server will not consider it
+<br/>
+<br/>
+- From v1.3.0  fix in queryString criteria with request url with extended path: i.e:  <http://baseUrl/path1/path2/api>
+<br/>
+<br/>
+- From v1.2.0  it supports **delayed** response (as register in file HAR)
+<br/>
+<br/>
+- From v1.1.0 it supports also request's **body** match criteria.
 
 
 ## Install

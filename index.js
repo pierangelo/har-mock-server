@@ -44,14 +44,20 @@ function readFileHar(path) {
  * optionally on mimetype if settend in @see DEFAULT_SEARCH_OPTIONS
  * @returns an array of matching responses
  */
-function searchResponse(harObj, req) {
+function searchResponse(harObj, req, basePath) {
 
 
     const entriesArray = harObj.log.entries.filter(e => {
         const urlObj = e.request.url;
         //'/fezeus/zeus/getAllErrors'
-        let arrayElements = urlObj.pathname.split("/");
-        let api = "/" + arrayElements[arrayElements.length - 1];
+        let api = urlObj.pathname;
+        if (basePath != '') {
+
+            let arrayElements = urlObj.pathname.split(basePath);
+            api = "/" + arrayElements[arrayElements.length - 1];
+        }
+
+
         //path criteria
         if (api !== req.path) {
             return false;
@@ -74,16 +80,13 @@ function searchResponse(harObj, req) {
 
         //check queryString...
         const responseMatchQueryString = entriesArray.filter(element => {
-            let arrayElements = element.request.url.path.split("/");
-            let apiPartial = "/" + arrayElements[arrayElements.length - 1];
-            return apiPartial === req.originalUrl;
+            return element.request.url.path === req.originalUrl;
         });
 
         tempResponseArray = responseMatchQueryString;
 
-
         //check body...
-        if (tempResponseArray.length > 1 && req.body) {
+        if (tempResponseArray.length > 1 && req.body && req.method !== 'GET') {
 
             const responseMatchBody = entriesArray.filter(element => {
                 const data = element.request.postData;
@@ -109,13 +112,13 @@ function searchResponse(harObj, req) {
  * @param {*} res
  * @param {*} next
  */
-function getResponse(filePath, req, res, next) {
+function getResponse(filePath, req, res, next, basePath) {
     let consoleMessages = [];
     consoleMessages.push("[request: " + chalk.yellow(req.method) + " " + chalk.yellow(req.path) + "]");
     //default response code if no response were found
     let responseStatus = 404;
     const harObj = readFileHar(filePath);
-    const results = searchResponse(harObj, req);
+    const results = searchResponse(harObj, req, basePath);
     if (results.length > 0) {
 
         let result = results.filter(el => {

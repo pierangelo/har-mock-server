@@ -8,22 +8,18 @@ const bodyParser = require('body-parser');
 
 const [, , ...args] = process.argv;
 
-
-
 /**
  * Print help description on screen
- *
  */
 function printMenuHelp() {
     console.log(`har-mock-server [options] -f <path_to_file>.har
     options:
       -p  or --port:                    Port number to use. i.e: '-p 8000'
-      -f  or --file <path_to_file>.har: file's name (included directory. i.e: ./assets/file.har)
-
+      -f  or --file <path_to_file>.har: File's name (included directory. i.e: ./assets/file.har)
+      -b  or --basePath:                part of the url's path to be excluded during check
       `);
 
 }
-
 
 
 //entry point
@@ -46,6 +42,10 @@ const commands = args.reduce((opt, value, index) => {
                     } else {
                         opt.error = "ERROR: file doesn't exist: " + args[index + 1];
                     }
+                } else if (value === '-b' || value === '--basePath') {
+                    console.log(chalk.yellow("INFO") + ": param basePath is set to '" + args[index + 1] + "'");
+
+                    opt.basePath = args[index + 1];
                 }
 
     } catch (error) {
@@ -60,12 +60,17 @@ if (commands.help) {
 if (!commands.harFile) {
     return console.error(commands.error);
 }
+if (commands.basePath == null) {
+    commands.basePath = "";
+    console.log(chalk.yellow("WARN") + ": param basePath is missing:  default is set to '" + commands.basePath + "'");
+
+}
 
 // server
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-    server.getResponse(commands.harFile, req, res, next);
+    server.getResponse(commands.harFile, req, res, next, commands.basePath);
 });
 app.listen(commands.port);
 console.log("server listening on http://localhost:" + chalk.yellow(commands.port));
