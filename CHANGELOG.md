@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/pierangelo/har-mock-server/compare/1.3.1...1.4.0) (2024-03-04)
+
+
+### Features
+
+* added optional basePath param    fix: check http method  if requsest's body is present ([56fb754](https://github.com/pierangelo/har-mock-server/commit/56fb754fa327a557f0fc623cd4794b068eafdfdd))
+
 ### [1.3.1](https://github.com/pierangelo/har-mock-server/compare/1.3.0...1.3.1) (2024-03-01)
 
 
