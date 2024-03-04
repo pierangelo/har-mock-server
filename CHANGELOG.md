@@ -7,7 +7,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* added optional basePath param    fix: check http method  if requsest's body is present ([56fb754](https://github.com/pierangelo/har-mock-server/commit/56fb754fa327a557f0fc623cd4794b068eafdfdd))
+* added optional basePath param
+* fix: check http method  if requsest's body is present ([56fb754](https://github.com/pierangelo/har-mock-server/commit/56fb754fa327a557f0fc623cd4794b068eafdfdd))
 
 ### [1.3.1](https://github.com/pierangelo/har-mock-server/compare/1.3.0...1.3.1) (2024-03-01)
 
