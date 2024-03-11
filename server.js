@@ -5,8 +5,12 @@ const app = express();
 const server = require("./index");
 const chalk = require('chalk');
 const bodyParser = require('body-parser');
+var packageJson = require('./package.json');
 
 const [, , ...args] = process.argv;
+
+
+console.log(chalk.yellow(packageJson.name) + " v" + chalk.yellow(packageJson.version));
 
 /**
  * Print help description on screen
@@ -27,6 +31,7 @@ if (args.length == 0) {
     console.log(chalk.red("ERROR: no args were passed to application."));
     return printMenuHelp();
 }
+
 
 const commands = args.reduce((opt, value, index) => {
     try {
