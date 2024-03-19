@@ -1,6 +1,6 @@
 {
   "name": "har-mock-server",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "mock your FrontEnd project by using HAR file.",
   "main": "index.js",
   "scripts": {

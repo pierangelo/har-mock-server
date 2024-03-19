@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://github.com/pierangelo/har-mock-server/compare/1.5.1...1.5.2) (2024-03-19)
+
+
+### Bug Fixes
+
+* filename's path ([f28f953](https://github.com/pierangelo/har-mock-server/commit/f28f9537f533a7a8fc2647071c7087aede4056c9))
+
 ### [1.5.1](https://github.com/pierangelo/har-mock-server/compare/1.5.0...1.5.1) (2024-03-19)
 
 ## [1.5.0](https://github.com/pierangelo/har-mock-server/compare/1.4.0...1.5.0) (2024-03-19)
