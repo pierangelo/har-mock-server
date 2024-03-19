@@ -21,6 +21,10 @@ i.e:  you generate a request as http://localhost/<_controller_>/<_function_> and
 <br>so passing the param "-b /<_context_>/" the server will not consider it
 <br/>
 
+
+- From v1.5.0  added  option **excludeBody criteria** for not using it in searching  aresponse in har file
+<br/>
+
 - From v1.3.0  fix in **queryString criteria** with request url with extended path: i.e:  <http://baseUrl/path1/path2/api>
 <br/>
 
