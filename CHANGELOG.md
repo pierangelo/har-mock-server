@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/pierangelo/har-mock-server/compare/1.4.0...1.5.0) (2024-03-19)
+
+
+### Features
+
+* added request's 'excludeBody' option ([0c6ad2b](https://github.com/pierangelo/har-mock-server/commit/0c6ad2b5ea7f2f713ffbffd5ad2f7e39b9184738))
+* improved console's messages ([342d3be](https://github.com/pierangelo/har-mock-server/commit/342d3be5d45eb7d0a8ef6b1608ee186e61308710))
+
+
+### Bug Fixes
+
+* updated gitignore ([26f0a59](https://github.com/pierangelo/har-mock-server/commit/26f0a593935eb5a1473263d89902e733d74997e9))
+
 ## [1.4.0](https://github.com/pierangelo/har-mock-server/compare/1.3.1...1.4.0) (2024-03-04)
 
 
