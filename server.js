@@ -21,6 +21,7 @@ function printMenuHelp() {
       -p  or --port:                    Port number to use. i.e: '-p 8000'
       -f  or --file <path_to_file>.har: File's name (included directory. i.e: ./assets/file.har)
       -b  or --basePath:                part of the url's path to be excluded during check
+      -xB  or --excludeBody:            exclude request's body from criteria fpr searching a respose
       `);
 
 }
@@ -51,8 +52,10 @@ const commands = args.reduce((opt, value, index) => {
                     console.log(chalk.yellow("INFO") + ": param basePath is set to '" + args[index + 1] + "'");
 
                     opt.basePath = args[index + 1];
+                } else if (value === '-xB' || value === '--xBody') {
+                    opt.excludeBody = true;
+                    console.log(chalk.yellow("INFO") + ": body request criteria is exclude from searching a response");
                 }
-
     } catch (error) {
         console.error("error:", error);
     }
@@ -75,7 +78,7 @@ if (commands.basePath == null) {
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-    server.getResponse(commands.harFile, req, res, next, commands.basePath);
+    server.getResponse(commands, req, res, next, commands.basePath);
 });
 app.listen(commands.port);
 console.log("server listening on http://localhost:" + chalk.yellow(commands.port));

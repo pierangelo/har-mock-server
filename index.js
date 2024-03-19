@@ -44,7 +44,7 @@ function readFileHar(path) {
  * optionally on mimetype if settend in @see DEFAULT_SEARCH_OPTIONS
  * @returns an array of matching responses
  */
-function searchResponse(harObj, req, basePath) {
+function searchResponse(harObj, req, basePath, options) {
 
 
     const entriesArray = harObj.log.entries.filter(e => {
@@ -86,7 +86,7 @@ function searchResponse(harObj, req, basePath) {
         tempResponseArray = responseMatchQueryString;
 
         //check body...
-        if (tempResponseArray.length > 1 && req.body && req.method !== 'GET') {
+        if (tempResponseArray.length > 1 && req.body && req.method !== 'GET' && !options.excludeBody) {
 
             const responseMatchBody = entriesArray.filter(element => {
                 const data = element.request.postData;
@@ -107,18 +107,18 @@ function searchResponse(harObj, req, basePath) {
 /**
  * Retuns an appropriate response if present
  *
- * @param {*} filePath - HAR filename (included directories)
+ * @param {*} options from init
  * @param {*} req
  * @param {*} res
  * @param {*} next
  */
-function getResponse(filePath, req, res, next, basePath) {
+function getResponse(options, req, res, next, basePath) {
     let consoleMessages = [];
     consoleMessages.push("[request: " + chalk.yellow(req.method) + " " + chalk.yellow(req.path) + "]");
     //default response code if no response were found
     let responseStatus = 404;
-    const harObj = readFileHar(filePath);
-    const results = searchResponse(harObj, req, basePath);
+    const harObj = readFileHar(options.filePath);
+    const results = searchResponse(harObj, req, basePath, options);
     if (results.length > 0) {
 
         let result = results.filter(el => {
