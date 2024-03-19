@@ -117,7 +117,7 @@ function getResponse(options, req, res, next, basePath) {
     consoleMessages.push("[request: " + chalk.yellow(req.method) + " " + chalk.yellow(req.path) + "]");
     //default response code if no response were found
     let responseStatus = 404;
-    const harObj = readFileHar(options.filePath);
+    const harObj = readFileHar(options.harFile);
     const results = searchResponse(harObj, req, basePath, options);
     if (results.length > 0) {
 
